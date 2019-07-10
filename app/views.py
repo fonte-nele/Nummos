@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.utils import timezone
+
 from .models import Post
 # Create your views here.
 def index(request):
@@ -8,3 +9,9 @@ def index(request):
 
 def detalhesFonte(request):
 	return render(request, 'detalhesFonte.html', {})
+
+def detalhesLana(request):
+	return render(request, 'detalhesLana.html', {})
+
+def detalhesThiago(request):
+	return render(request, 'detalhesThiago.html', {})
