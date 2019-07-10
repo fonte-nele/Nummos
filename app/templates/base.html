@@ -27,13 +27,6 @@
 
   <!-- Main Stylesheet File -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
-
-  <!-- =======================================================
-    Theme Name: TheEvent
-    Theme URL: https://bootstrapmade.com/theevent-conference-event-bootstrap-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
 </head>
 
 <body>
@@ -41,7 +34,7 @@
   <!--==========================
     Header
   ============================-->
-  <header id="header">
+  <header id="header" class="header-fixed">
     <div class="container">
 
       <div id="logo" class="pull-left">
@@ -58,9 +51,20 @@
           <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#supporters">Parceiros</a></li>
           <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#faq">Dúvidas</a></li>
           <li><a href="https://www.beblue.com.br/credenciamento/" target = "_blank">Seja um parceiro</a></li>
-          <li><a href="#contact">Cadastre-se</a></li>
-          <li><a href="#contact">Login</a></li>
+
+          {% if user.is_authenticated %}
+            <span>Bem vindo, {{user}}!</span>
+            <form class="logout_link" action="{% url 'accounts:logout' %}" method="post">
+              {% csrf_token %}
+                <button class="wow fadeInUp" type="submit">Logout</button>
+            </form>
+          {% endif %}
+
+          {% if not user.is_authenticated %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'accounts:signup' %}">Cadastre-se</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">Login</a></li>
           <li class="buy-tickets"><a href="https://play.google.com/store/apps" target = "_blank">Baixe o aplicativo</a></li>
+          {% endif %}
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
@@ -84,10 +88,10 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Sobre Nummos</h4>
             <ul>
-              <li><i class="fa fa-angle-right"></i> <a href="#intro">Inicio</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="#about">Quem somos</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="#speakers">Criadores</a></li>
-              <li><i class="fa fa-angle-right"></i> <a href="#intro">Termos de Uso</a></li>
+              <li><i class="fa fa-angle-right"></i> <a href="{% url 'index' %}#intro">Inicio</a></li>
+              <li><i class="fa fa-angle-right"></i> <a href="{% url 'index' %}#about">Quem somos</a></li>
+              <li><i class="fa fa-angle-right"></i> <a href="{% url 'index' %}#speakers">Criadores</a></li>
+              <li><i class="fa fa-angle-right"></i> <a href="{% url 'index' %}#intro">Termos de Uso</a></li>
               <li><i class="fa fa-angle-right"></i> <a href="https://www.beblue.com.br/credenciamento/" target = "_blank">Seja um Parceiro</a></li>
             </ul>
           </div>
