@@ -1,16 +1,28 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 <br><br><br><br><br>
-
 <section id="signup" class="wow fadeInUp">
+	<div class="col-12 form-popup align-middle container" id="myCadastroEmpresa" style="display:block"> 
+		<div class="section-header">
+			<h2>Seja um Parceiro</h2>
+		</div>
+	    <form class="form-container text-center form-container-cadastro-empresa" method="post">{% csrf_token %}	
+	            {{ form.as_p }}
+	        <button type="submit" class="btn btn-primary">Login</button>
+	        <button type="button" class="btn  btn-form cancel" href="{% url 'index' %}">Voltar</button>
+	    </form>
+	</div>
+
+</section>
+
+
+<!-- <section id="signup" class="wow fadeInUp">
 
       <div class="container">
         <div class="section-header">
 <h2>Log In</h2>
 </div>
-<!--<form class="site-form" action="index.html" method="post">-->
 <form class="site-form" action="{% url 'accounts:login' %}" method="post">
 	{% csrf_token %}
 	{{form.as_p}}
@@ -20,6 +32,5 @@
 
 </form>
 </div>
-</section>
-<!--<a href="#intro" class="scrollto"><img src="/img/logo2.png"  alt="" title=""></a>-->
+</section> -->
 {% endblock %}

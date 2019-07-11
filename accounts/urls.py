@@ -8,6 +8,7 @@ urlpatterns = [
 	url(r'^signup/$', views.signup_view, name="signup"),
 	url(r'^login/$', views.login_view, name="login"),
 	url(r'^logout/$', views.logout_page, name="logout"),
+	path('new', views.cadastroEmpresa, name='cadastroEmpresa'),
 	# path('signup', views.signup_view, name="signup"),
 	# path('login', views.login_view, name="login"),
 	# path('logout', views.logout_page, name="logout"),

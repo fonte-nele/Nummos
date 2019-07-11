@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.utils import timezone
-
+from django import forms
 from .models import Post
 # Create your views here.
 def index(request):

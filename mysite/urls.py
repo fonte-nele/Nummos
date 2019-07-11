@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app.urls')),
     path('accounts/', include('accounts.urls')),
+    #path('', include('Games_fbv.urls', namespace='Games_fbv')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
